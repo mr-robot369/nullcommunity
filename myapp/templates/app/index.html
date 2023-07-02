@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nlu Registration</title>
+</head>
+<body>
+    <center>
+        <h1>Upload Information</h1>
+        <form action="{% url 'infoupload' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="name" id=""></td>
+                </tr>
+                <tr>
+                    <td>Profile Photo</td>
+                    <td><input type="file" name="image" accept="image/*" id=""></td>
+                </tr>
+                <tr>
+                    <td>Resume</td>
+                    <td><input type="file" name="resume" accept="application/pdf"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Upload"></td>
+                </tr>
+            </table>
+        </form>
+    </center>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        #profile{
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;
+            flex-direction: column;
+        }
+        .heading{
+            font-size: 33px;
+            font-weight: 700;
+            text-align: center;
+            margin: 20px;
+        }
+        .profile-img {
+            border: 2px solid grey;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="profile">
+        <h1 class="heading">Profile</h1>
+
+        {% if key1 %}
+        {% for i in key1 %}
+        <div><img src="{{MEDIA_URL}}{{i.Image.url}}" alt="" class="profile-img"></div>
+        <div>{{i.Name}}</div>
+        <br>
+        <p>Resume <a href="{{MEDIA_URL}}{{i.Resume.url}}">Click here</a></p>
+        <br>
+        <form name="EditForm" action="{% url 'edit' pk=i.id %}
+" method="post">
+                           	{% csrf_token %}
+                            	<input type="submit" value="Edit Profile">
+                 </form>
+
+
+        {% endfor %}
+        {% endif %}
+    </section>
+</body>
+
+</html>
